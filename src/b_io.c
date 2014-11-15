@@ -10,7 +10,7 @@
 #include "b_io.h"
 #include "stm32f4xx_conf.h"
 
-bool setup_io(GPIO_TypeDef* port, uint32_t pin, uint32_t direction) {
+bool setup_io(GPIO_TypeDef* port, uint16_t pin, uint32_t direction) {
 	GPIO_InitTypeDef  GPIO_InitStructure;
 	
 	uint32_t peripheral = peripheral_port_from_port(port);
@@ -20,7 +20,6 @@ bool setup_io(GPIO_TypeDef* port, uint32_t pin, uint32_t direction) {
 	// GPIOD Periph clock enable
 	RCC_AHB1PeriphClockCmd(peripheral, ENABLE);
 
-	// Configure PD12, PD13, PD14 and PD15 in output pushpull mode
 	GPIO_InitStructure.GPIO_Pin = pin;
 	GPIO_InitStructure.GPIO_Mode = direction;
 	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
