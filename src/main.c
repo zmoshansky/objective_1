@@ -1,5 +1,7 @@
-
-// Private function prototypes
+#include "stm32f4xx_conf.h"
+#include "b_io.h"
+#include "bool.h"
+// Forward Declarations
 void init();
 
 int main(void) {

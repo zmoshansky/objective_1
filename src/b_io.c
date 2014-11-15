@@ -7,12 +7,18 @@
 *  pin ex.) 		GPIO_Pin_12
 *  direction ex.)	GPIO_Mode_OUT
 */
+#include "b_io.h"
+#include "stm32f4xx_conf.h"
 
-int setup_io(uint32_t port, uint32_t pin, uint32_t direction) {
+bool setup_io(GPIO_TypeDef* port, uint32_t pin, uint32_t direction) {
 	GPIO_InitTypeDef  GPIO_InitStructure;
+	
+	uint32_t peripheral = peripheral_port_from_port(port);
+	if (peripheral == 0) return false;
+	
 	// ---------- GPIO -------- //
 	// GPIOD Periph clock enable
-	RCC_AHB1PeriphClockCmd(peripheral_port_from_port(port), ENABLE);
+	RCC_AHB1PeriphClockCmd(peripheral, ENABLE);
 
 	// Configure PD12, PD13, PD14 and PD15 in output pushpull mode
 	GPIO_InitStructure.GPIO_Pin = pin;
@@ -21,20 +27,13 @@ int setup_io(uint32_t port, uint32_t pin, uint32_t direction) {
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;
 	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
 	GPIO_Init(GPIOD, &GPIO_InitStructure);
+	return true;
 }
 
-uint32_t peripheral_port_from_port(uint32_t port) {
-	// TODO Fill in remaining cases with other ports A, B, C 
-	switch(port) {
-		case GPIOA:
-			return RCC_AHB1Periph_GPIOA;
-		case GPIOB:
-			return RCC_AHB1Periph_GPIOB;
-		case GPIOC:
-			return RCC_AHB1Periph_GPIOC;
-		case GPIOD:
-			return RCC_AHB1Periph_GPIOD;
-		default:
-			return 0;
-	}
+uint32_t peripheral_port_from_port(GPIO_TypeDef* port) {
+	if (port == GPIOA) return RCC_AHB1Periph_GPIOA;
+	else if(port == GPIOB) return RCC_AHB1Periph_GPIOB;
+	else if(port == GPIOC) return RCC_AHB1Periph_GPIOC;
+	else if(port == GPIOD) return RCC_AHB1Periph_GPIOD;
+	return 0;
 }
