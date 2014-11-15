@@ -1,6 +1,6 @@
 # Sources
 
-SRCS = main.c stm32f4xx_it.c system_stm32f4xx.c syscalls.c
+SRCS = main.c stm32f4xx_it.c system_stm32f4xx.c syscalls.c b_io.c
 
 # Project name
 PROJ_NAME=objective_1
