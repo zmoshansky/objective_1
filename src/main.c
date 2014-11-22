@@ -12,12 +12,10 @@ int main(void) {
 }
 
 void init() {
-	setup_io(GPIOD, GPIO_Pin_12 | GPIO_Pin_14, GPIO_Mode_OUT);
+
+	setup_io(GPIOD, GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15, GPIO_Mode_AF);
 }
 
 /*
  * Dummy function to avoid compiler error
  */
-void _init() {
-
-}
