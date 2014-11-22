@@ -1,4 +1,4 @@
-#ifndef B_IO_H 
+#ifndef B_IO_H
 #define B_IO_H
 
 #include "stm32f4xx.h"

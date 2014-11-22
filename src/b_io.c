@@ -15,10 +15,10 @@ static uint32_t peripheral_port_from_port(GPIO_TypeDef* port);
 
 bool setup_io(GPIO_TypeDef* port, uint16_t pin, uint32_t direction) {
     GPIO_InitTypeDef  GPIO_InitStructure;
-    
+
     uint32_t peripheral = peripheral_port_from_port(port);
     if (peripheral == 0) return false;
-    
+
     // ---------- GPIO -------- //
     // GPIOx Periph clock enable
     RCC_AHB1PeriphClockCmd(peripheral, ENABLE);
