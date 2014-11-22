@@ -1,6 +1,7 @@
 #include "stm32f4xx_conf.h"
 #include "b_io.h"
 #include "bool.h"
+#include "b_output.h"
 // Forward Declarations
 void init();
 
@@ -13,7 +14,12 @@ int main(void) {
 
 void init() {
 
-	setup_io(GPIOD, GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15, GPIO_Mode_AF);
+
+//INITIALIZE LED TO BLINK WITH PWM
+    SystemInit();
+    TM_TIMER_Init();
+    TM_PWM_Init();
+
 }
 
 /*
