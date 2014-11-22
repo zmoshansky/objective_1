@@ -10,6 +10,9 @@
 #include "b_io.h"
 #include "stm32f4xx_conf.h"
 
+// Forward declarations
+static uint32_t peripheral_port_from_port(GPIO_TypeDef* port);
+
 bool setup_io(GPIO_TypeDef* port, uint16_t pin, uint32_t direction) {
 	GPIO_InitTypeDef  GPIO_InitStructure;
 	
