@@ -1,6 +1,6 @@
 # Sources
 
-SRCS = main.c stm32f4xx_it.c system_stm32f4xx.c syscalls.c b_io.c
+SRCS = main.c stm32f4xx_it.c system_stm32f4xx.c syscalls.c b_io.c b_output.c
 
 # Project name
 PROJ_NAME=objective_1
@@ -84,4 +84,4 @@ clean:
 	rm -f $(OUTPATH)/$(PROJ_NAME).hex
 	rm -f $(OUTPATH)/$(PROJ_NAME).bin
 	$(MAKE) clean -C lib # Remove this line if you don't want to clean the libs as well
-	
+
